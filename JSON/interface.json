@@ -1,0 +1,19 @@
+[
+  {
+    "endpoint": "OrderFood",
+    "arguments": {
+      "food": "string",
+      "amount": "number"
+    },
+    "method": "POST"
+  },
+
+  {
+    "endpoint": "RateFood",
+    "arguments": {
+      "food": "string",
+      "rating": "number"
+    },
+    "method": "POST"
+  }
+]
