@@ -1,0 +1,40 @@
+import sun.net.www.protocol.http.HttpURLConnection;
+import java.io.DataOutputStream;
+import java.net.URL;
+
+public class client {
+    {{#each}}
+    {{#if postOrPut}}
+    public void send{{methodName}}({{#each arguments}}{{type}} {{name}}, {{/each}}
+            String baseUrl, String httpMethod)
+            throws Exception {
+        String url = baseUrl + "/" + "{{endPoint}}";
+        HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
+        con.setRequestMethod(httpMethod);
+        con.setRequestProperty("Content-Type","application/json");
+        String str =  "{"
+        {{#each arguments}}{{#if @last}} + "{{name}}" + ":" + {{name}}{{else}} + "{{name}}" + ":" + {{name}} + ","{{/if}}{{/each}}
+        + "}";
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(str);
+        wr.flush();
+        wr.close();
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'POST' request to URL : " + url);
+        System.out.println("Post parameters : " + str);
+        System.out.println("Response Code : " + responseCode);
+    }
+    {{else}}
+    public void get{{methodName}}({{#each arguments}}{{type}} {{name}}, {{/each}}String baseUrl)
+            throws Exception {
+        String url = baseUrl + "/" + "{{endPoint}}" + "?"{{#each arguments}}+ "{{name}}" + "=" + {{name}} + "&"{{/each}};
+        HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
+        con.setRequestMethod("GET");
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'GET' request to URL : " + url);
+        System.out.println("Response Code : " + responseCode);
+    }
+    {{/if}}
+    {{/each}}
+}

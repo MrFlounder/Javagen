@@ -1,15 +1,9 @@
 import sun.net.www.protocol.http.HttpURLConnection;
 import java.io.DataOutputStream;
 import java.net.URL;
-
+{{ var }}
 public class client {
-    private static final String baseUrl = "http://localhost:8080";
-    public static void main(String[] args) throws Exception {
-        client http = new client();
-        http.send("food", "apple", "amount", 10, "OrderFood", "POST");
-        http.send("food", "apple", "rating", 2, "RateFood", "POST");
-    }
-    private void send(String key1, String key1Name, String key2, Integer key2Val, String endPoint, String httpMethod)
+    public void send(String baseUrl, String key1, String key1Name, String key2, Integer key2Val, String endPoint, String httpMethod)
             throws Exception {
         String url = baseUrl + "/" + endPoint;
         HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();

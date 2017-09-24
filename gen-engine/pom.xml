@@ -11,5 +11,19 @@
 
     <artifactId>gen-engine</artifactId>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.jtwig</groupId>
+            <artifactId>jtwig-core</artifactId>
+            <version>5.86.1.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jknack</groupId>
+            <artifactId>handlebars</artifactId>
+            <version>4.0.6</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

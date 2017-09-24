@@ -15,5 +15,15 @@
       "rating": "number"
     },
     "method": "POST"
+  },
+
+  {
+    "endpoint": "newEndPoint",
+    "arguments": {
+      "food": "string",
+      "rating": "number",
+      "somethingelse": "string"
+    },
+    "method": "GET"
   }
 ]

@@ -1,0 +1,35 @@
+package com.server;
+
+import org.json.JSONObject;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+@Path("/")
+public class server {
+    {{#each}}
+        {{#if postOrPut}}
+        @{{httpMethod}}
+        @Path("{{endPoint}}")
+        @Produces(MediaType.TEXT_PLAIN)
+        public Response {{methodName}}(String jsonString) {
+            JSONObject jsonRequestObj = new JSONObject(jsonString);
+            if ({{#each arguments}}{{#if @last}}jsonRequestObj.get("{{name}}") instanceof {{type}}{{else}}jsonRequestObj.get("{{name}}") instanceof {{type}} && {{/if}}
+            {{/each}}) {
+                return Response.status(Response.Status.ACCEPTED).type(MediaType.TEXT_HTML_TYPE).build();
+
+            } else {
+                return Response.status(Response.Status.BAD_REQUEST).type(MediaType.TEXT_HTML_TYPE).build();
+            }
+        }
+        {{else}}
+        @GET
+        @Path("{{endPoint}}")
+        @Produces(MediaType.TEXT_PLAIN)
+        public Response {{methodName}}({{#each arguments}}{{#if @last}}@QueryParam("{{name}}") {{type}} {{name}}{{else}}@QueryParam("{{name}}") {{type}} {{name}} ,{{/if}}{{/each}}) {
+            return Response.status(Response.Status.ACCEPTED).type(MediaType.TEXT_HTML_TYPE).build();
+        }
+        {{/if}}
+    {{/each}}
+}
