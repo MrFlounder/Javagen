@@ -26,7 +26,7 @@ public class GeneratorHandlebars {
         JSONArray  jsonArray = null;
         // read json standard file to JSONArray
         try {
-            FileReader reader = new FileReader("C:\\Users\\kzang\\CodingProjects\\Javagen\\JSON\\interface.json");
+            FileReader reader = new FileReader("JSON/spec.json");
 
             JSONParser jsonParser = new JSONParser();
             jsonArray = (JSONArray) jsonParser.parse(reader);
@@ -57,7 +57,7 @@ public class GeneratorHandlebars {
             String endPoint = (String) spec.get("endpoint");
             String httpmethod = (String) spec.get("method");
             newSpec = new SpecDetail(endPoint + httpmethod, httpmethod, endPoint, alist);
-            if (httpmethod.equalsIgnoreCase("POST")) {
+            if (httpmethod.equalsIgnoreCase("POST") || httpmethod.equalsIgnoreCase("PUT")) {
                 newSpec.setPostOrPut(true);
             } else {
                 newSpec.setGet(true);

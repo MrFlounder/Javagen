@@ -52,4 +52,22 @@ public class server {
         }
         
     
+        
+        @PUT
+        @Path("someputEndPoint")
+        @Produces(MediaType.TEXT_PLAIN)
+        public Response someputEndPointPUT(String jsonString) {
+            JSONObject jsonRequestObj = new JSONObject(jsonString);
+            if (jsonRequestObj.get("somethingelse") instanceof String && 
+            jsonRequestObj.get("rating") instanceof Integer && 
+            jsonRequestObj.get("food") instanceof String
+            ) {
+                return Response.status(Response.Status.ACCEPTED).type(MediaType.TEXT_HTML_TYPE).build();
+
+            } else {
+                return Response.status(Response.Status.BAD_REQUEST).type(MediaType.TEXT_HTML_TYPE).build();
+            }
+        }
+        
+    
 }

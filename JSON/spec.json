@@ -26,4 +26,14 @@
     },
     "method": "GET"
   }
+
+  {
+    "endpoint": "someputEndPoint",
+    "arguments": {
+      "food": "string",
+      "rating": "number",
+      "somethingelse": "string"
+    },
+    "method": "PUT"
+  }
 ]
