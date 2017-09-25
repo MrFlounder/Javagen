@@ -1,14 +1,19 @@
 # Project Title
 Javagen
-## Version
-1.0-SNAPSHOT
+## Version Updates
+* Applied OOD best practice, re-constructed code generator engine. 
+** Defined specification file parsing interface for future possible specification file formats(json, xml, etc).
+** Isolated third party template lib utilizing logic from code generate service code. For possible future third party lib switching.
+** Opened support for passing arguments when running the code generate engine, for other languange output support, only small change is needed.
+* All default config file source path can be find in class : Javagen\gen-engine\src\main\java\env\EnvironmentManager.java.
+* Changed client template, now all client methods return response code as int from service.
 ## Instruction
 This is a code generator engine written in java, consume json file giving specifications about client-server communication rules, output source code for simple http client and server that follow the same specification defined in json.
 ### Play with it
 #### Code generate engine
-Build pom first, then run the generator Javagen\gen-engine\src\main\java\GeneratorHandlebars.java.
+Build pom first, then run the generator gen-engine\src\main\java\Main.java
 
-Output cource code file will be located at Javagen\client-server\src\main\java.
+Default output cource code file will be located at Javagen\client-server\src\main\java\
 
 Generator engine itself is standalone java application.
 #### Deploy service to server
@@ -77,7 +82,7 @@ handlebars.java
 * Multi-language output ( with a template manager take user input/config indicating which language is wanted )
 * Static typing af conmmunication standard with reflection
 * Support http delete method
-* Re-constructe code utilize best OOD practice
+* Re-constructe code utilize best OOD practice (DONE)
 
 ## Authors
 
