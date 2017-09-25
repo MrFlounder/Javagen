@@ -10,8 +10,8 @@ public class ClientRunner {
     private static final String baseUrl = "http://localhost:8080";
     public static void main(String[] args) throws Exception {
         client http = new client();
-        http.getnewEndPointGET("something", 100, "apple", baseUrl);
-        http.sendOrderFoodPOST(1000, "orange", baseUrl, "POST");
+        System.out.println(http.getnewEndPointGET("something", 100, "apple", baseUrl));
+        System.out.println(http.sendOrderFoodPOST(1000, "orange", baseUrl, "POST"));
         http.sendRateFoodPOST(12, "banana", baseUrl, "POST");
     }
 

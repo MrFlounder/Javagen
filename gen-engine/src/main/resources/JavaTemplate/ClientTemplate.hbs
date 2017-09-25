@@ -5,7 +5,7 @@ import java.net.URL;
 public class client {
     {{#each}}
     {{#if postOrPut}}
-    public void send{{methodName}}({{#each arguments}}{{type}} {{name}}, {{/each}}
+    public int send{{methodName}}({{#each arguments}}{{type}} {{name}}, {{/each}}
             String baseUrl, String httpMethod)
             throws Exception {
         String url = baseUrl + "/" + "{{endPoint}}";
@@ -21,19 +21,16 @@ public class client {
         wr.flush();
         wr.close();
         int responseCode = con.getResponseCode();
-        System.out.println("\nSending 'POST' request to URL : " + url);
-        System.out.println("Post parameters : " + str);
-        System.out.println("Response Code : " + responseCode);
+        return responseCode;
     }
     {{else}}
-    public void get{{methodName}}({{#each arguments}}{{type}} {{name}}, {{/each}}String baseUrl)
+    public int get{{methodName}}({{#each arguments}}{{type}} {{name}}, {{/each}}String baseUrl)
             throws Exception {
         String url = baseUrl + "/" + "{{endPoint}}" + "?"{{#each arguments}}+ "{{name}}" + "=" + {{name}} + "&"{{/each}};
         HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
         con.setRequestMethod("GET");
         int responseCode = con.getResponseCode();
-        System.out.println("\nSending 'GET' request to URL : " + url);
-        System.out.println("Response Code : " + responseCode);
+        return responseCode;
     }
     {{/if}}
     {{/each}}
