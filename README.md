@@ -2,9 +2,9 @@
 Javagen
 ## Version Updates
 * Applied OOD best practice, re-constructed code generator engine. 
-** Defined specification file parsing interface for future possible specification file formats(json, xml, etc).
-** Isolated third party template lib utilizing logic from code generate service code. For possible future third party lib switching.
-** Opened support for passing arguments when running the code generate engine, for other languange output support, only small change is needed.
+  1. Defined specification file parsing interface for future possible specification file formats(json, xml, etc).
+  2. Isolated third party template lib utilizing logic from code generate service code. For possible future third party lib switching.
+  3. Opened support for passing arguments when running the code generate engine, for other languange output support, only small change    is  needed.
 * All default config file source path can be find in class : Javagen\gen-engine\src\main\java\env\EnvironmentManager.java.
 * Changed client template, now all client methods return response code as int from service.
 ## Instruction
