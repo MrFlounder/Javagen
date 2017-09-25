@@ -7,7 +7,9 @@ This is a code generator engine written in java, consume json file giving specif
 ### Play with it
 #### Code generate engine
 Build pom first, then run the generator Javagen\gen-engine\src\main\java\GeneratorHandlebars.java.
-Output cource code file will be located at C:\Users\kzang\CodingProjects\Javagen\client-server\src\main\java
+
+Output cource code file will be located at Javagen\client-server\src\main\java.
+
 Generator engine itself is standalone java application.
 #### Deploy service to server
 After server and client source code generated, you can deploy server code to a web app container. And then run client code as standalone java app to see results in console.
