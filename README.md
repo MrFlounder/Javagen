@@ -71,7 +71,7 @@ jersey
 #### Template
 handlebars.java
 
-#### To be implemented
+## To be implemented
 * Multi-language output ( with a template manager take user input/config indicating which language is wanted )
 * Static typing af conmmunication standard with reflection
 * Support http delete method
